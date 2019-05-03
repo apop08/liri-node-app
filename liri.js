@@ -7,7 +7,7 @@ var moment = require('moment');
 var spotify = new Spotify(keys.spotify);
 
 const inputType = process.argv[2];
-const args = process.argv.split(3).join(" ");
+const args = (process.argv).splice(3).join(" ");
 runCommands(inputType, args)
 function runCommands(cmd, args) {
     switch (cmd) {
@@ -70,8 +70,8 @@ function runCommands(cmd, args) {
 
 
         case ("movie-this"):
-            if (movieName == "") {
-                movieName = "Mr.Nobody";
+            if (args == "") {
+                args = "Mr.Nobody";
             }
             var queryUrl = "http://www.omdbapi.com/?t=" + args + "&y=&plot=short&apikey=trilogy";
             axios.get(queryUrl).then(
